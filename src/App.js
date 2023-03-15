@@ -1,16 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import Video from "./components/video/Video";
-import Home from "./components/home/Home";
+import { Route, Routes } from "react-router-dom";
+import Main from "./components/main/Main"
+import Result from "./components/result/Result"
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Video />} />
-        <Route path="/result" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Main/>} ></Route>
+      <Route path="/result" element={<Result/>} ></Route>
+    </Routes>
   );
 }
 
