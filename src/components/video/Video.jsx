@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as V from "./Video.style";
 import * as faceapi from "face-api.js";
 
@@ -12,6 +12,7 @@ const Video = () => {
   const videoWidth = 1280;
 
   useEffect(() => {
+    startVideo();
     const loadModels = async () => {
       Promise.all([
         faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
@@ -40,7 +41,9 @@ const Video = () => {
   const handleVideoOnPlay = () => {
     setInterval(async () => {
       if (canvasRef && canvasRef.current) {
-        canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(videoRef.current);
+        canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(
+          videoRef.current
+        );
         const displaySize = {
           width: videoWidth,
           height: videoHeight,
@@ -49,28 +52,23 @@ const Video = () => {
         faceapi.matchDimensions(canvasRef.current, displaySize);
 
         const detections = await faceapi
-          .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+          .detectAllFaces(
+            videoRef.current,
+            new faceapi.TinyFaceDetectorOptions()
+          )
           .withFaceLandmarks()
           .withFaceExpressions();
 
-        const resizedDetections = faceapi.resizeResults(detections, displaySize);
+        const resizedDetections = faceapi.resizeResults(
+          detections,
+          displaySize
+        );
 
         canvasRef &&
           canvasRef.current &&
-          canvasRef.current.getContext("2d").clearRect(0, 0, videoWidth, videoHeight);
-
-        canvasRef &&
-          canvasRef.current &&
-          faceapi.draw.drawDetections(canvasRef.current, resizedDetections);
-
-        // canvasRef &&
-        //   canvasRef.current &&
-        //   faceapi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections);
-
-        //표정 점수
-        canvasRef &&
-          canvasRef.current &&
-          faceapi.draw.drawFaceExpressions(canvasRef.current, resizedDetections);
+          canvasRef.current
+            .getContext("2d")
+            .clearRect(0, 0, videoWidth, videoHeight);
 
         drawBackgorund(resizedDetections[0].expressions);
       }
@@ -83,7 +81,15 @@ const Video = () => {
     setCaptureVideo(false);
   };
 
-  let faceKind = ["angry", "disgusted", "fearful", "happy", "neutral", "sad", "surprised"];
+  let faceKind = [
+    "angry",
+    "disgusted",
+    "fearful",
+    "happy",
+    "neutral",
+    "sad",
+    "surprised",
+  ];
   let face = "";
 
   const drawBackgorund = (resizedDetections) => {
@@ -113,16 +119,15 @@ const Video = () => {
 
   return (
     <div>
-      <V.BtnContainer>
-        {captureVideo && modelsLoaded ? (
-          <V.CamBtn onClick={closeWebcam}>Close Webcam</V.CamBtn>
-        ) : (
-          <V.CamBtn onClick={startVideo}>Open Webcam</V.CamBtn>
-        )}
-      </V.BtnContainer>
       {captureVideo ? (
         modelsLoaded ? (
-          <div style={{ display: "flex", justifyContent: "center", padding: "10px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+            }}
+          >
             <video
               ref={videoRef}
               height={videoHeight}
