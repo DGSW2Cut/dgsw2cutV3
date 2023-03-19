@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "@tensorflow-models/body-pix": "^2.2.0",
-    "@tensorflow/tfjs-backend-webgl": "^3.21.0",
-    "@tensorflow/tfjs-converter": "^3.21.0",
-    "@tensorflow/tfjs-core": "^3.21.0",
+    "@tensorflow/tfjs-backend-webgl": "3.21.0",
+    "@tensorflow/tfjs-converter": "3.21.0",
+    "@tensorflow/tfjs-core": "3.21.0",
+    "@vladmandic/face-api": "^1.7.9",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "face-api.js": "^0.22.2",

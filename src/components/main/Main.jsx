@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import * as M from "./Main.style";
 import * as faceapi from "face-api.js";
 
-import "@tensorflow/tfjs-core";
-import "@tensorflow/tfjs-converter";
-import "@tensorflow/tfjs-backend-webgl";
 import * as bodyPix from "@tensorflow-models/body-pix";
 import Webcam from "react-webcam";
 
@@ -46,9 +43,25 @@ const Main = () => {
     console.log(backImage);
   }, [backImage]);
 
-  async function drawMask(webcam, canvas, tempCtx, tempCanvas, originCtx, originCanvas, context) {
+  async function drawMask(
+    webcam,
+    canvas,
+    tempCtx,
+    tempCanvas,
+    originCtx,
+    originCanvas,
+    context
+  ) {
     requestAnimationFrame(() =>
-      drawMask(webcam, canvas, tempCtx, tempCanvas, originCtx, originCanvas, context)
+      drawMask(
+        webcam,
+        canvas,
+        tempCtx,
+        tempCanvas,
+        originCtx,
+        originCanvas,
+        context
+      )
     );
     const segmentation = await bodypixnet.segmentPerson(webcam);
     const mask = bodyPix.toMask(segmentation);
@@ -104,7 +117,15 @@ const Main = () => {
     //   context.drawImage(originCanvas, 0, 0, canvas.width, canvas.height);
     // })();
     req = requestAnimationFrame(() =>
-      drawMask(webcam, canvas, tempCtx, tempCanvas, originCtx, originCanvas, context)
+      drawMask(
+        webcam,
+        canvas,
+        tempCtx,
+        tempCanvas,
+        originCtx,
+        originCanvas,
+        context
+      )
     );
   };
 
@@ -205,7 +226,9 @@ const Main = () => {
   const handleVideoOnPlay = () => {
     setInterval(async () => {
       if (canvasRef && canvasRef.current) {
-        canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(videoRef.current);
+        canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(
+          videoRef.current
+        );
         const displaySize = {
           width: videoWidth,
           height: videoHeight,
@@ -214,15 +237,23 @@ const Main = () => {
         faceapi.matchDimensions(canvasRef.current, displaySize);
 
         const detections = await faceapi
-          .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+          .detectAllFaces(
+            videoRef.current,
+            new faceapi.TinyFaceDetectorOptions()
+          )
           .withFaceLandmarks()
           .withFaceExpressions();
 
-        const resizedDetections = faceapi.resizeResults(detections, displaySize);
+        const resizedDetections = faceapi.resizeResults(
+          detections,
+          displaySize
+        );
 
         canvasRef &&
           canvasRef.current &&
-          canvasRef.current.getContext("2d").clearRect(0, 0, videoWidth, videoHeight);
+          canvasRef.current
+            .getContext("2d")
+            .clearRect(0, 0, videoWidth, videoHeight);
 
         // canvasRef &&
         //   canvasRef.current &&
@@ -248,7 +279,15 @@ const Main = () => {
     setCaptureVideo(false);
   };
 
-  let faceKind = ["angry", "disgusted", "fearful", "happy", "neutral", "sad", "surprised"];
+  let faceKind = [
+    "angry",
+    "disgusted",
+    "fearful",
+    "happy",
+    "neutral",
+    "sad",
+    "surprised",
+  ];
   let face = "";
 
   const drawBackgorund = (resizedDetections) => {
@@ -304,9 +343,15 @@ const Main = () => {
         </M.Header>
         <M.Button onClick={() => clickHandler(lupi)}>잔망루피</M.Button>
         <M.Button onClick={() => clickHandler(spongibab)}>스폰지밥</M.Button>
-        <M.Button onClick={() => clickHandler(playGroundImg)}>학교 운동장</M.Button>
-        <M.Button onClick={() => clickHandler(schoolFrontImg)}>학교 기숙사동 정문</M.Button>
-        <M.Button onClick={() => clickHandler(schoolBackImg)}>학교 크로마키</M.Button>
+        <M.Button onClick={() => clickHandler(playGroundImg)}>
+          학교 운동장
+        </M.Button>
+        <M.Button onClick={() => clickHandler(schoolFrontImg)}>
+          학교 기숙사동 정문
+        </M.Button>
+        <M.Button onClick={() => clickHandler(schoolBackImg)}>
+          학교 크로마키
+        </M.Button>
         {/* <M.Button onClick={() => resetRAF()}>배경 없애기</M.Button> */}
         <M.TakeButton onClick={() => snapshot()}>사진 찍기</M.TakeButton>
         {/* {
