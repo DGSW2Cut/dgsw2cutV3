@@ -23,6 +23,10 @@ import backimage from "./assets/dgswback.jpg";
 import spongibab from "./assets/spongibab.jpg";
 import angryimg from "./assets/angry.jpeg";
 import sadimg from "./assets/sad.jpg";
+import fearImg from "./assets/fearful.jpg";
+import happyImg from "./assets/happy.jpg";
+import surprisedImg from "./assets/surprised.jpg";
+import disgustedImg from "./assets/disgusted.avif";
 import ai from "./ai";
 
 const getCamera = () => {
@@ -50,46 +54,51 @@ const getCamera = () => {
 
 const imgElement = document.createElement("img");
 imgElement.src = backimage;
-getCamera().then((video) => {
+const run = getCamera().then((video) => {
   const canvas = document.createElement("canvas");
   document.getElementById("root").appendChild(canvas);
-  const textELement = document.createElement("h1");
-  document.getElementById("root").appendChild(textELement);
+  const buttonElement = document.createElement("button");
+  buttonElement.innerText = "사진 찍기";
+  const imageList = [];
+
+  buttonElement.addEventListener("click", () => {
+    const img = canvas.toDataURL("image/jpeg");
+    imageList.push(img);
+    console.log(imageList);
+  });
+
+  document.getElementById("root").appendChild(buttonElement);
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
   video.play();
   ai(video, canvas, imgElement, (text) => {
-    textELement.innerText = text;
-
     switch (text) {
       case "neutral":
-        console.log("neutral");
-        imgElement.src = backimage;
+        imgElement.src = "";
         break;
 
       case "angry":
-        console.log("angry");
-        break;
-
-      case "disgusted":
-        console.log("disgusted");
-        break;
-
-      case "fearful":
-        console.log("fearful");
-        break;
-
-      case "happy":
-        console.log("happy");
         imgElement.src = angryimg;
         break;
 
+      case "disgusted":
+        imgElement.src = disgustedImg;
+        break;
+
+      case "fearful":
+        imgElement.src = fearImg;
+        break;
+
+      case "happy":
+        imgElement.src = happyImg;
+        break;
+
       case "sad":
-        console.log("sad");
+        imgElement.src = sadimg;
         break;
 
       case "surprised":
-        console.log("surprised");
+        imgElement.src = surprisedImg;
         break;
 
       default:
