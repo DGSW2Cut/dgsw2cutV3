@@ -50,52 +50,52 @@ const getCamera = () => {
 
 const imgElement = document.createElement("img");
 imgElement.src = backimage;
-imgElement.onload = () => {
-  getCamera().then((video) => {
-    const canvas = document.createElement("canvas");
-    document.getElementById("root").appendChild(canvas);
-    const textELement = document.createElement("h1");
-    document.getElementById("root").appendChild(textELement);
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    video.play();
-    ai(video, canvas, imgElement, (text) => {
-      textELement.innerText = text;
+getCamera().then((video) => {
+  const canvas = document.createElement("canvas");
+  document.getElementById("root").appendChild(canvas);
+  const textELement = document.createElement("h1");
+  document.getElementById("root").appendChild(textELement);
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  video.play();
+  ai(video, canvas, imgElement, (text) => {
+    textELement.innerText = text;
 
-      switch (text) {
-        case "neutral":
-          console.log("neutral");
-          break;
+    switch (text) {
+      case "neutral":
+        console.log("neutral");
+        imgElement.src = backimage;
+        break;
 
-        case "angry":
-          console.log("angry");
-          break;
+      case "angry":
+        console.log("angry");
+        break;
 
-        case "disgusted":
-          console.log("disgusted");
-          break;
+      case "disgusted":
+        console.log("disgusted");
+        break;
 
-        case "fearful":
-          console.log("fearful");
-          break;
+      case "fearful":
+        console.log("fearful");
+        break;
 
-        case "happy":
-          console.log("happy");
-          break;
+      case "happy":
+        console.log("happy");
+        imgElement.src = angryimg;
+        break;
 
-        case "sad":
-          console.log("sad");
-          break;
+      case "sad":
+        console.log("sad");
+        break;
 
-        case "surprised":
-          console.log("surprised");
-          break;
+      case "surprised":
+        console.log("surprised");
+        break;
 
-        default:
-      }
-    });
+      default:
+    }
   });
-};
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
