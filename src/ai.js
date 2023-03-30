@@ -56,7 +56,6 @@ const ai = (video, canvas, background, onresult, fps = 60) => {
           Object.keys(t).forEach((v) => {
             if (t[v] > big) {
               big = t[v];
-
               bigstr = v;
             }
           });
@@ -79,7 +78,7 @@ const ai = (video, canvas, background, onresult, fps = 60) => {
         context.drawImage(background, 0, 0, canvas.width, canvas.height);
         context.drawImage(sexCanvas, 0, 0, canvas.width, canvas.height);
       });
-    }, 1000 / fps);
+    }, 5000 / fps);
   });
 };
 

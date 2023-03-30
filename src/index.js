@@ -20,6 +20,9 @@ import reportWebVitals from "./reportWebVitals";
 // );
 
 import backimage from "./assets/dgswback.jpg";
+import spongibab from "./assets/spongibab.jpg";
+import angryimg from "./assets/angry.jpeg";
+import sadimg from "./assets/sad.jpg";
 import ai from "./ai";
 
 const getCamera = () => {
@@ -44,6 +47,7 @@ const getCamera = () => {
       });
   });
 };
+
 const imgElement = document.createElement("img");
 imgElement.src = backimage;
 imgElement.onload = () => {
@@ -57,6 +61,38 @@ imgElement.onload = () => {
     video.play();
     ai(video, canvas, imgElement, (text) => {
       textELement.innerText = text;
+
+      switch (text) {
+        case "neutral":
+          console.log("neutral");
+          break;
+
+        case "angry":
+          console.log("angry");
+          break;
+
+        case "disgusted":
+          console.log("disgusted");
+          break;
+
+        case "fearful":
+          console.log("fearful");
+          break;
+
+        case "happy":
+          console.log("happy");
+          break;
+
+        case "sad":
+          console.log("sad");
+          break;
+
+        case "surprised":
+          console.log("surprised");
+          break;
+
+        default:
+      }
     });
   });
 };
