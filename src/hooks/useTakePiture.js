@@ -5,6 +5,7 @@ import fearImg from "../assets/fearful.jpg";
 import happyImg from "../assets/happy.jpg";
 import surprisedImg from "../assets/surprised.jpg";
 import disgustedImg from "../assets/disgusted.avif";
+import dgswback from "../assets/dgswback.jpg";
 import ai from "../ai";
 import React, { useEffect, useRef } from "react";
 import { pictureState } from "../atom/picture";
@@ -17,12 +18,12 @@ const useTakePiture = () => {
   const [imageList, setImageList] = useRecoilState(pictureState);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(imageList);
-    if (imageList.length >= 2) {
-      navigate("/adornment");
-    }
-  }, [imageList]);
+  // useEffect(() => {
+  //   console.log(imageList);
+  //   if (imageList.length >= 2) {
+  //     navigate("/adornment");
+  //   }
+  // }, [imageList]);
 
   const getCamera = () => {
     return new Promise((res, rej) => {
@@ -35,7 +36,7 @@ const useTakePiture = () => {
         video: { width: 640, height: 480 },
       })
         .then((vidStream) => {
-          const video = document.createElement("video");
+          let video = document.createElement("video");
           video.srcObject = vidStream;
           video.addEventListener("canplay", () => {
             res(video);
@@ -50,22 +51,23 @@ const useTakePiture = () => {
   useEffect(() => {
     imageRef.current.src = backimage;
     getCamera().then((video) => {
-      const buttonElement = document.createElement("button");
-      buttonElement.innerText = "사진 찍기";
+      // const buttonElement = document.createElement("button");
+      // buttonElement.innerText = "사진 찍기";
 
-      buttonElement.addEventListener("click", () => {
-        const img = canvasRef.current.toDataURL("image/jpeg");
-        setImageList((prev) => [...prev, img]);
-      });
+      // buttonElement.addEventListener("click", () => {
+      //   const img = canvasRef.current.toDataURL("image/jpeg");
+      //   setImageList((prev) => [...prev, img]);
+      // });
 
-      document.getElementById("root").appendChild(buttonElement);
-      canvasRef.current.width = video.videoWidth;
-      canvasRef.current.height = video.videoHeight;
+      // document.getElementById("root").appendChild(buttonElement);
+      // canvasRef.current.width = video.videoWidth;
+      // canvasRef.current.height = video.videoHeight;
       video.play();
+
       ai(video, canvasRef.current, imageRef.current, (text) => {
         switch (text) {
           case "neutral":
-            imageRef.current.src = "";
+            imageRef.current.src = dgswback;
             break;
 
           case "angry":

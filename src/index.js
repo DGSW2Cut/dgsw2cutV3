@@ -6,6 +6,7 @@ import App from "./pages/App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Adornment from "./pages/Adornment";
+import Result from "./components/result/Result";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -15,6 +16,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/adornment" element={<Adornment />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </BrowserRouter>
   </RecoilRoot>
