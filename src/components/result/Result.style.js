@@ -1,7 +1,7 @@
 import styled from "styled-components";
-// import lufftBtn from "../../assets/result/lufftBtn.svg";
-// import kuromiBtn from "../../assets/result/kuromiBtn.svg";
-// import ryanBtn from "../../assets/result/ryanBtn.svg";
+import lufftBtn from "../../assets/result/luffyBtn.svg";
+import kuromiBtn from "../../assets/result/kuromiBtn.svg";
+import ryanBtn from "../../assets/result/ryanBtn.svg";
 
 export const Result = styled.div`
   width: 100%;
@@ -113,17 +113,17 @@ export const Setting = styled.div`
         background: white;
       }
 
-      /* button[id="luffy"] {
+      button[id="luffy"] {
         background-image: url(${lufftBtn});
-      } */
-      /* 
+      }
+
       button[id="kuromi"] {
         background: url(${kuromiBtn});
       }
 
       button[id="ryan"] {
         background: url(${ryanBtn});
-      } */
+      }
     }
   }
 `;

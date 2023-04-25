@@ -57,25 +57,48 @@ const App = () => {
   }, [imageList]);
 
   return (
-    <div>
+    <Container>
       <img
         ref={imageRef}
         src=""
         style={{ visibility: "hidden", position: "absolute" }}
       />
-      <canvas ref={canvasRef} style={{ width: 800, height: 600 }} />
-
-      <Btn
-        onClick={() => {
-          const img = canvasRef.current.toDataURL("image/jpeg");
-          setImageList((prev) => [...prev, img]);
-        }}
-      >
-        촬영
-      </Btn>
-      <Cnt>{`${imageList.length} / 2`}</Cnt>
-    </div>
+      <div>
+        <canvas ref={canvasRef} style={{ width: 800, height: 600 }} />
+      </div>
+      <ButtonContainer>
+        <Btn
+          onClick={() => {
+            const img = canvasRef.current.toDataURL("image/jpeg");
+            setImageList((prev) => [...prev, img]);
+          }}
+        >
+          촬영
+        </Btn>
+        <Cnt>{`${imageList.length} / 2`}</Cnt>
+      </ButtonContainer>
+    </Container>
   );
 };
 
 export default App;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  gap: 30px;
+
+  canvas {
+    border-radius: 30px;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  gap: 30px;
+`;
