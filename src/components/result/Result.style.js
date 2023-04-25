@@ -51,7 +51,8 @@ export const Setting = styled.div`
       button {
         width: 114px;
         height: 114px;
-        background: #d9d9d9;
+        /* background: #d9d9d9; */
+        /* background-color: rgb(236, 236, 236); */
         border-radius: 15px;
         border: none;
 
@@ -59,9 +60,6 @@ export const Setting = styled.div`
         font-weight: 700;
         font-size: 36px;
         color: #000000;
-      }
-
-      button[id="selected"] {
       }
     }
   }
@@ -125,6 +123,10 @@ export const Setting = styled.div`
         background: url(${ryanBtn});
       }
     }
+  }
+
+  .selected {
+    background-color: rgb(235, 195, 194);
   }
 `;
 
