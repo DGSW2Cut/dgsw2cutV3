@@ -13,6 +13,18 @@ export const Result = styled.div`
 export const PictureContainer = styled.div`
   width: 1134px;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:nth-child(2) {
+    display: none;
+
+    @media print {
+      display: flex;
+      page-break-before: always;
+    }
+  }
 `;
 
 export const Split = styled.div`
@@ -24,6 +36,10 @@ export const Split = styled.div`
 export const Setting = styled.div`
   width: calc(100% - 1135px);
   height: 100%;
+
+  @media print {
+    display: none;
+  }
 
   display: flex;
   flex-direction: column;
@@ -45,7 +61,8 @@ export const Setting = styled.div`
       height: 114px;
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: flex-start;
+      gap: 25px;
       margin-top: 38px;
 
       button {
@@ -79,7 +96,7 @@ export const Setting = styled.div`
       button {
         width: 114px;
         height: 114px;
-        background: #d9d9d9;
+        /* background: #d9d9d9; */
         border-radius: 15px;
         border: 1px solid black;
 
@@ -89,7 +106,25 @@ export const Setting = styled.div`
         color: #000000;
       }
 
-      button[id="color"] {
+      #body {
+        position: absolute;
+        visibility: hidden;
+        margin-top: 200px;
+        margin-left: 190px;
+      }
+
+      #color {
+        width: 114px;
+        height: 114px;
+        /* background: #d9d9d9; */
+        border-radius: 15px;
+        border: 1px solid black;
+
+        font-style: normal;
+        font-weight: 700;
+        font-size: 36px;
+        color: #000000;
+
         background: conic-gradient(
           from 180deg at 50% 50%,
           #ffffff 0deg,
@@ -123,10 +158,14 @@ export const Setting = styled.div`
         background: url(${ryanBtn});
       }
     }
+
+    .selected {
+      border: 3px solid #f6cad6;
+    }
   }
 
   .selected {
-    background-color: rgb(235, 195, 194);
+    background-color: #f6cad6;
   }
 `;
 

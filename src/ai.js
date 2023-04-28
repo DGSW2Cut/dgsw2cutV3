@@ -78,7 +78,7 @@ const ai = (video, canvas, background, onresult, fps = 60) => {
         context.drawImage(background, 0, 0, canvas.width, canvas.height);
         context.drawImage(sexCanvas, 0, 0, canvas.width, canvas.height);
       });
-    }, 5000 / fps);
+    }, 10000 / fps);
   });
 };
 

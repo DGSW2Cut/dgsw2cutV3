@@ -50,7 +50,7 @@ const App = () => {
     console.log(imageList);
     if (imageList.length >= 2) {
       setEnd(true);
-      navigate("/adornment");
+      navigate("/result");
     } else {
       setEnd(false);
     }
