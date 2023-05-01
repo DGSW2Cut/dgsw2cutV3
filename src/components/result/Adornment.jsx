@@ -4,7 +4,7 @@ import { pictureState } from "../../atom/picture";
 
 import ryan from "../../assets/result/back/choonsikBack.png";
 import kuromi from "../../assets/result/back/kuromiBack.png";
-import luffy from "../../assets/result/back/luffyBack.svg";
+import luffy from "../../assets/result/back/luffyBack.png";
 import luffyChar from "../../assets/result/back/luffyChar.png";
 import coex from "../../assets/result/back/coex.png";
 import coexBlack from "../../assets/result/back/coexBlack.png";

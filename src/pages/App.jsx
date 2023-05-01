@@ -82,6 +82,8 @@ const Btn = styled.button`
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
+
+  cursor: pointer;
 `;
 
 const Cnt = styled.div`

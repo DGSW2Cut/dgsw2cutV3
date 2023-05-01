@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import * as R from "./Result.style";
 import Adornment from "./Adornment";
+import { useNavigate } from "react-router-dom";
 
 const Result = () => {
+  const navigate = useNavigate();
   const [cnt, setCnt] = useState(2);
   const [back, setBack] = useState("ryan");
   const list = ["ryan", "kuromi", "luffy", "black", "white"];
+
+  const Print = () => {
+    window.print();
+    document.location.href = "/";
+  };
 
   return (
     <R.Result>
@@ -50,7 +57,7 @@ const Result = () => {
             ))}
           </div>
         </div>
-        <R.Print onClick={() => window.print()}>출력</R.Print>
+        <R.Print onClick={() => Print()}>출력</R.Print>
       </R.Setting>
     </R.Result>
   );
