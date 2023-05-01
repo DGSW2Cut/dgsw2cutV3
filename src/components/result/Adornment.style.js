@@ -46,6 +46,7 @@ export const ImgContainer = styled.div`
   #float {
     z-index: 2;
     margin-top: 132px;
+    position: absolute;
   }
 `;
 
@@ -53,8 +54,10 @@ export const TemplateImg = styled.img`
   position: relative;
   left: 0;
   top: 0;
+
   @media print {
-    transform: translate(-89%, 22%);
+    /* transform: translate(-97%, 22%); */
+    transform: translate(-97%, 21%);
   }
 `;
 
@@ -62,12 +65,14 @@ export const PictureImg = styled.img`
   position: absolute;
   left: 50%;
   transform: translate(-40%, 0);
+
   @media print {
     transform: translate(-166%, 125%);
     height: 160px;
     width: 240px;
     top: ${({ index }) => `${12 * (index + 1) + index * 160}px`};
   }
+
   top: ${({ index }) => `${12 * (index + 1) + index * 180}px`};
   width: 250px;
   height: 180px;

@@ -7,39 +7,6 @@ import { useNavigate } from "react-router-dom";
 import useTakePiture from "../hooks/useTakePiture";
 import { useState } from "react";
 
-const Btn = styled.button`
-  width: 232px;
-  height: 166px;
-  background-color: #e98383;
-  /* opacity: 0.5; */
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  border: none;
-  color: #000000;
-
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-`;
-
-const Cnt = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 232px;
-  height: 166px;
-
-  background: #e98383;
-  /* opacity: 0.5; */
-  border-radius: 15px;
-
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 44px;
-  color: #000000;
-`;
-
 const App = () => {
   const navigate = useNavigate();
   const { canvasRef, imageRef } = useTakePiture();
@@ -99,6 +66,40 @@ const Container = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 60vh;
   gap: 30px;
+`;
+const Btn = styled.button`
+  width: 232px;
+  height: 166px;
+  background-color: #f6cad6;
+  /* opacity: 0.5; */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  border: none;
+  color: #000000;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+`;
+
+const Cnt = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 232px;
+  height: 166px;
+
+  background: #f6cad6;
+  /* opacity: 0.5; */
+  border-radius: 15px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  color: #000000;
 `;

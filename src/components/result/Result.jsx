@@ -9,8 +9,9 @@ const Result = () => {
   const list = ["ryan", "kuromi", "luffy", "black", "white"];
 
   useEffect(() => {
-    console.log(backColor);
-  }, [backColor]);
+    // console.log(backColor);
+    // document.getElementById("ryan").className = "selected";
+  }, []);
 
   return (
     <R.Result>
