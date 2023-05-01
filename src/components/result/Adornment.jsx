@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { pictureState } from "../../atom/picture";
-import choonsik from "../../assets/template/choonsik.png";
+
 import ryan from "../../assets/result/back/choonsikBack.png";
 import kuromi from "../../assets/result/back/kuromiBack.png";
 import luffy from "../../assets/result/back/luffyBack.svg";
@@ -9,53 +9,46 @@ import luffyChar from "../../assets/result/back/luffyChar.png";
 import coex from "../../assets/result/back/coex.png";
 import coexBlack from "../../assets/result/back/coexBlack.png";
 
-import styled from "styled-components";
 import * as A from "./Adornment.style";
 
-const Adornment = ({ cnt, back, backColor }) => {
+/**
+ * @param {{cnt: number, back?: "luffy" | "kuromi" | "ryan" | "black" | "white"}}
+ * @returns {JSX.Element}
+ */
+const Adornment = ({ cnt, back }) => {
   const [imageList] = useRecoilState(pictureState);
-
-  const ReturnImg = (d) => {
-    switch (d) {
-      case "ryan":
-        return ryan;
-
-      case "kuromi":
-        return kuromi;
-
-      case "luffy":
-        return luffy;
-
-      case "black":
-        return coexBlack;
-
-      case "white":
-        return coex;
-
-      // case "color":
-      //   return color;
-
-      default:
-        return ryan;
-    }
-  };
+  const BackgroundImg = useMemo(
+    () => ({ ryan, kuromi, luffy, black: coexBlack, white: coex }),
+    []
+  );
 
   return (
     <A.Container>
-      {new Array(cnt >= 2 ? 2 : 1).fill(0).map((v, idx) => (
+      {new Array(2).fill(0).map((_, idx) => (
         <A.ImgContainer key={idx} id={idx}>
-          {back == "luffy" && (
-            <A.TemplateImg id="float" src={luffyChar} alt="" />
-          )}
-          <A.TemplateImg src={ReturnImg(back)} alt="" />
-          {[...imageList, ...imageList].map((v, idx) => (
-            <A.PictureImg src={v} index={idx} />
+          <IsLuffyImage back={back} />
+          <A.TemplateImg src={BackgroundImg[back] || ryan} alt="template" />
+          {[...imageList, ...imageList].map((imageUrl, imgIdx) => (
+            <A.PictureImg src={imageUrl} index={imgIdx} key={imgIdx} alt="i" />
           ))}
         </A.ImgContainer>
       ))}
-      <p>{cnt == 4 && "X 2"}</p>
+      {cnt === 4 && <p>X 2</p>}
     </A.Container>
   );
 };
 
 export default Adornment;
+
+/**
+ *
+ * @param {{back: string}}
+ * @returns {JSX.Element}
+ */
+const IsLuffyImage = ({ back }) => {
+  return (
+    <>
+      {back === "luffy" && <A.TemplateImg id="float" src={luffyChar} alt="" />}
+    </>
+  );
+};

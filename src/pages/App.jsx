@@ -11,38 +11,36 @@ const App = () => {
   const navigate = useNavigate();
   const { canvasRef, imageRef } = useTakePiture();
   const [imageList, setImageList] = useRecoilState(pictureState);
-  const [end, setEnd] = useState(false);
+  const [, setEnd] = useState(false);
 
   useEffect(() => {
-    console.log(imageList);
     if (imageList.length >= 2) {
       setEnd(true);
       navigate("/result");
     } else {
       setEnd(false);
     }
-  }, [imageList]);
+  }, [imageList, navigate]);
+
+  const captureImg = () => {
+    const img = canvasRef.current.toDataURL("image/jpeg");
+    setImageList((prev) => [...prev, img]);
+  };
 
   return (
     <Container>
       <img
         ref={imageRef}
         src=""
+        alt="hiddenImage"
         style={{ visibility: "hidden", position: "absolute" }}
       />
       <div>
         <canvas ref={canvasRef} style={{ width: 800, height: 600 }} />
       </div>
       <ButtonContainer>
-        <Btn
-          onClick={() => {
-            const img = canvasRef.current.toDataURL("image/jpeg");
-            setImageList((prev) => [...prev, img]);
-          }}
-        >
-          촬영
-        </Btn>
-        <Cnt>{`${imageList.length} / 2`}</Cnt>
+        <Btn onClick={captureImg}>촬영</Btn>
+        <Cnt>{imageList.length} / 2</Cnt>
       </ButtonContainer>
     </Container>
   );

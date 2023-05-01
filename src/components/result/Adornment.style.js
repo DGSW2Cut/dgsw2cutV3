@@ -63,17 +63,18 @@ export const TemplateImg = styled.img`
 
 export const PictureImg = styled.img`
   position: absolute;
-  left: 50%;
-  transform: translate(-40%, 0);
+  left: 8%;
+  /* transform: translate(-40%, 0); */
 
   @media print {
     transform: translate(-166%, 125%);
+    left: 50%;
     height: 160px;
     width: 240px;
     top: ${({ index }) => `${12 * (index + 1) + index * 160}px`};
   }
 
-  top: ${({ index }) => `${12 * (index + 1) + index * 180}px`};
-  width: 250px;
-  height: 180px;
+  top: ${({ index }) => `${12 * (index + 1) + index * 162}px`};
+  width: 225px;
+  height: 162px;
 `;
