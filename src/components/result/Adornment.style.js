@@ -37,8 +37,12 @@ export const ImgContainer = styled.div`
   }
 
   @media print {
+    &:nth-child(1) {
+      transform: translateX(5%);
+      z-index: -1;
+    }
     &:nth-child(2) {
-      transform: rotate(0deg) translateX(0%);
+      transform: rotate(0deg) translateX(-2%);
       z-index: -1;
     }
   }
