@@ -6,6 +6,8 @@ import ryan from "../../assets/result/back/choonsikBack.png";
 import kuromi from "../../assets/result/back/kuromiBack.png";
 import luffy from "../../assets/result/back/luffyBack.png";
 import luffyChar from "../../assets/result/back/luffyChar.png";
+import kuromiChar from "../../assets/result/back/kuromiChar.png";
+import ryanChar from "../../assets/result/back/choonsikChar.png";
 import coex from "../../assets/result/back/coex.png";
 import coexBlack from "../../assets/result/back/coexBlack.png";
 
@@ -26,7 +28,7 @@ const Adornment = ({ cnt, back }) => {
     <A.Container>
       {new Array(2).fill(0).map((_, idx) => (
         <A.ImgContainer key={idx} id={idx}>
-          <IsLuffyImage back={back} />
+          <CharImage back={back} />
           <A.TemplateImg src={BackgroundImg[back] || ryan} alt="template" />
           {[...imageList, ...imageList].map((imageUrl, imgIdx) => (
             <A.PictureImg src={imageUrl} index={imgIdx} key={imgIdx} alt="i" />
@@ -45,10 +47,22 @@ export default Adornment;
  * @param {{back: string}}
  * @returns {JSX.Element}
  */
-const IsLuffyImage = ({ back }) => {
-  return (
-    <>
-      {back === "luffy" && <A.TemplateImg id="float" src={luffyChar} alt="" />}
-    </>
-  );
+
+const CharImage = ({ back }) => {
+  console.log(back);
+  let img = undefined;
+
+  switch (back) {
+    case "luffy":
+      img = luffyChar;
+      break;
+    case "kuromi":
+      img = kuromiChar;
+      break;
+    case "ryan":
+      img = ryanChar;
+      break;
+  }
+
+  return <>{<A.TemplateImg id={back} src={img} alt="" />}</>;
 };

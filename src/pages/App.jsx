@@ -6,6 +6,8 @@ import { pictureState } from "../atom/picture";
 import { useNavigate } from "react-router-dom";
 import useTakePiture from "../hooks/useTakePiture";
 import { useState } from "react";
+import cam1 from "../assets/cam1.png";
+import logo from "../assets/logo.png";
 
 const App = () => {
   const navigate = useNavigate();
@@ -29,19 +31,23 @@ const App = () => {
 
   return (
     <Container>
+      <img src={cam1} alt="카메라 사진" id="cam" />
       <img
         ref={imageRef}
         src=""
         alt="hiddenImage"
         style={{ visibility: "hidden", position: "absolute" }}
       />
-      <div>
+      <div id="canvase">
         <canvas ref={canvasRef} style={{ width: 800, height: 600 }} />
       </div>
-      <ButtonContainer>
-        <Btn onClick={captureImg}>촬영</Btn>
-        <Cnt>{imageList.length} / 2</Cnt>
-      </ButtonContainer>
+      <Info>
+        <img src={logo} alt="학교 로고" />
+        <ButtonContainer>
+          <Btn onClick={captureImg}>촬영</Btn>
+          <Cnt>{imageList.length} / 2</Cnt>
+        </ButtonContainer>
+      </Info>
     </Container>
   );
 };
@@ -50,15 +56,31 @@ export default App;
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-
-  gap: 30px;
+  justify-content: space-evenly;
 
   canvas {
     border-radius: 30px;
   }
+
+  #cam {
+    z-index: 1;
+    position: relative;
+  }
+
+  #canvase {
+    z-index: 2;
+    position: absolute;
+    top: 355px;
+    left: 145px;
+  }
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 `;
 
 const ButtonContainer = styled.div`

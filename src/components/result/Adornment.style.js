@@ -47,9 +47,21 @@ export const ImgContainer = styled.div`
     }
   }
 
-  #float {
+  #luffy {
     z-index: 2;
     margin-top: 132px;
+    position: absolute;
+  }
+
+  #kuromi {
+    z-index: 2;
+    margin-top: 121px;
+    position: absolute;
+  }
+
+  #ryan {
+    z-index: 2;
+    margin-top: 109px;
     position: absolute;
   }
 `;
