@@ -59,6 +59,9 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-evenly;
 
+  width: 1920px;
+  height: 1080px;
+
   canvas {
     border-radius: 30px;
   }
@@ -71,8 +74,8 @@ const Container = styled.div`
   #canvase {
     z-index: 2;
     position: absolute;
-    top: 355px;
-    left: 145px;
+    top: 360px;
+    left: 150px;
   }
 `;
 
