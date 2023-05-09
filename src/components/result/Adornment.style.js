@@ -38,11 +38,11 @@ export const ImgContainer = styled.div`
 
   @media print {
     &:nth-child(1) {
-      transform: translateX(5%);
+      transform: translateX(2%);
       z-index: -1;
     }
     &:nth-child(2) {
-      transform: rotate(0deg) translateX(-2%);
+      transform: rotate(0deg) translateX(-4%);
       z-index: -1;
     }
   }
@@ -91,6 +91,6 @@ export const PictureImg = styled.img`
   }
 
   top: ${({ index }) => `${12 * (index + 1) + index * 162}px`};
-  width: 225px;
-  height: 162px;
+  width: 214px;
+  height: 158px;
 `;
