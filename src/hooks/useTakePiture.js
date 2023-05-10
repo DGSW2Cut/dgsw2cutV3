@@ -4,7 +4,7 @@ import sadimg from "../assets/sad.jpg";
 import fearImg from "../assets/fearful.jpg";
 import happyImg from "../assets/happy.jpg";
 import surprisedImg from "../assets/surprised.jpg";
-import disgustedImg from "../assets/disgusted.avif";
+import disgustedImg from "../assets/disgusted.jpg";
 import dgswback from "../assets/dgswback.jpg";
 import ai from "../ai";
 import React, { useEffect, useRef } from "react";
