@@ -14,8 +14,8 @@ const Result = () => {
     if (cnt == 4) {
       window.print();
     }
-    // document.location.href = "/";
-    navigate("/");
+    document.location.href = "/";
+    // navigate("/");
   };
 
   return (
