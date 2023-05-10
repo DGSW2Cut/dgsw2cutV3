@@ -11,7 +11,11 @@ const Result = () => {
 
   const Print = () => {
     window.print();
-    document.location.href = "/";
+    if (cnt == 4) {
+      window.print();
+    }
+    // document.location.href = "/";
+    navigate("/");
   };
 
   return (
@@ -20,11 +24,11 @@ const Result = () => {
         <R.PictureContainer>
           <Adornment cnt={cnt} back={back} />
         </R.PictureContainer>
-        {cnt === 4 && (
+        {/* {cnt === 4 && (
           <R.PictureContainer>
             <Adornment cnt={cnt} back={back} />
           </R.PictureContainer>
-        )}
+        )} */}
       </div>
       <R.Split />
       <R.Setting>
