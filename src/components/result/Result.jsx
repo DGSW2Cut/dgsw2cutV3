@@ -7,7 +7,7 @@ const Result = () => {
   const navigate = useNavigate();
   const [cnt, setCnt] = useState(2);
   const [back, setBack] = useState("ryan");
-  const list = ["ryan", "kuromi", "luffy", "black", "white"];
+  const list = ["ryan", "kuromi", "luffy", "doguri", "black", "white"];
 
   const Print = () => {
     window.print();
@@ -20,17 +20,12 @@ const Result = () => {
 
   return (
     <R.Result>
-      <div>
-        <R.PictureContainer>
-          <Adornment cnt={cnt} back={back} />
-        </R.PictureContainer>
-        {/* {cnt === 4 && (
-          <R.PictureContainer>
-            <Adornment cnt={cnt} back={back} />
-          </R.PictureContainer>
-        )} */}
-      </div>
-      <R.Split />
+      <R.PictureContainer>
+        <Adornment cnt={cnt} back={back} />
+      </R.PictureContainer>
+      <R.SplitContainer>
+        <R.Split />
+      </R.SplitContainer>
       <R.Setting>
         <div id="cnt">
           <h1>1. 수량 선택</h1>

@@ -2,16 +2,16 @@ import styled from "styled-components";
 import lufftBtn from "../../assets/result/luffyBtn.svg";
 import kuromiBtn from "../../assets/result/kuromiBtn.svg";
 import ryanBtn from "../../assets/result/ryanBtn.svg";
+import doguriBtn from "../../assets/result/doguriBtn.svg";
 
 export const Result = styled.div`
   width: 100%;
   height: 100vh;
-
   display: flex;
 `;
 
 export const PictureContainer = styled.div`
-  width: 1134px;
+  width: 65%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -27,14 +27,19 @@ export const PictureContainer = styled.div`
   }
 `;
 
+export const SplitContainer = styled.div`
+  width: 3%;
+  height: 100%;
+`;
+
 export const Split = styled.div`
   height: 100%;
   width: 1px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.3);
 `;
 
 export const Setting = styled.div`
-  width: calc(100% - 1135px);
+  width: 32%
   height: 100%;
 
   @media print {
@@ -45,8 +50,6 @@ export const Setting = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  margin-left: 30px;
-
   button {
     cursor: pointer;
   }
@@ -57,8 +60,6 @@ export const Setting = styled.div`
 
   div[id="cnt"] {
     div {
-      width: 531px;
-      height: 114px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -66,8 +67,7 @@ export const Setting = styled.div`
       margin-top: 38px;
 
       button {
-        width: 114px;
-        height: 114px;
+        padding : 3rem;
         /* background: #d9d9d9; */
         /* background-color: rgb(236, 236, 236); */
         border-radius: 15px;
@@ -157,6 +157,11 @@ export const Setting = styled.div`
       button[id="ryan"] {
         background: url(${ryanBtn});
       }
+
+      button[id="doguri"] {
+        background: url(${doguriBtn});
+        background-size: cover;
+      }
     }
 
     .selected {
@@ -170,16 +175,14 @@ export const Setting = styled.div`
 `;
 
 export const Print = styled.button`
-  width: 699px;
+  width: 20rem;
   height: 124px;
 
   margin-top: 135px;
 
-  background: #d9d9d9;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: #efefef;
   border-radius: 15px;
   border: none;
-
   font-weight: 700;
   font-size: 36px;
   color: #000000;
