@@ -36,6 +36,17 @@ export const ImgContainer = styled.div`
     z-index: -1;
   }
 
+  &:nth-child(3) {
+    margin-left: -5rem;
+    transform: rotate(-15deg) translateX(-30%);
+    z-index: -1;
+  }
+
+  &:nth-child(4) {
+    margin-left: -8rem;
+    transform: rotate(10deg) translateX(-30%);
+    z-index: -1;
+  }
   @media print {
     &:nth-child(1) {
       transform: translateX(2%);
@@ -67,7 +78,20 @@ export const ImgContainer = styled.div`
 `;
 
 export const TemplateImg = styled.img`
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+  @media print {
+    /* transform: translate(-97%, 22%); */
+    transform: translate(-97%, 21%);
+  }
+`;
+
+export const TemplateCharImg = styled.img`
+  position: absolute;
+  z-index: 1;
   left: 0;
   top: 0;
 
