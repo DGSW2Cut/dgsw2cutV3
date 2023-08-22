@@ -6,6 +6,10 @@ import ryan from "../../assets/result/back/choonsikBack.png";
 import kuromi from "../../assets/result/back/kuromiBack.png";
 import luffy from "../../assets/result/back/luffyBack.png";
 import luffyChar from "../../assets/result/back/luffyChar.png";
+import bonobono from "../../assets/result/back/bonobonoBack.png";
+import bonobonoChar from "../../assets/result/back/bonobonoChar.png";
+import snoopy from "../../assets/result/back/snoopyBack.png";
+import snoopyChar from "../../assets/result/back/snoopyChar.png";
 import doguri from "../../assets/result/back/doguriBack.png";
 import doguriChar from "../../assets/result/back/doguriChar.png";
 import kuromiChar from "../../assets/result/back/kuromiChar.png";
@@ -16,13 +20,22 @@ import coexBlack from "../../assets/result/back/Black.png";
 import * as A from "./Adornment.style";
 
 /**
- * @param {{cnt: number, back?: "luffy" | "kuromi" | "ryan" | "doguri" | "black" | "white"}}
+ * @param {{cnt: number, back?: "luffy" | "kuromi" | "ryan" | "doguri" | "snoopy" | "black" | "white"}}
  * @returns {JSX.Element}
  */
 const Adornment = ({ cnt, back }) => {
   const imageList = useRecoilValue(pictureState);
   const BackgroundImg = useMemo(
-    () => ({ ryan, kuromi, luffy, doguri, black: coexBlack, white: coex }),
+    () => ({
+      ryan,
+      kuromi,
+      luffy,
+      doguri,
+      snoopy,
+      bonobono,
+      black: coexBlack,
+      white: coex,
+    }),
     []
   );
 
@@ -65,6 +78,12 @@ const CharImage = ({ back }) => {
       break;
     case "doguri":
       img = doguriChar;
+      break;
+    case "snoopy":
+      img = snoopyChar;
+      break;
+    case "bonobono":
+      img = bonobonoChar;
       break;
   }
 

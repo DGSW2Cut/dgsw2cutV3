@@ -3,6 +3,8 @@ import lufftBtn from "../../assets/result/luffyBtn.svg";
 import kuromiBtn from "../../assets/result/kuromiBtn.svg";
 import ryanBtn from "../../assets/result/ryanBtn.svg";
 import doguriBtn from "../../assets/result/doguriBtn.svg";
+import bonobonoBtn from "../../assets/result/bonobonoBtn.svg";
+import SnoopyBtn from "../../assets/result/snoopyBtn.svg";
 
 export const Result = styled.div`
   width: 100%;
@@ -160,6 +162,16 @@ export const Setting = styled.div`
 
       button[id="doguri"] {
         background: url(${doguriBtn});
+        background-size: cover;
+      }
+
+      button[id="snoopy"] {
+        background: url(${SnoopyBtn});
+        background-size: cover;
+      }
+
+      button[id="bonobono"] {
+        background: url(${bonobonoBtn});
         background-size: cover;
       }
     }
