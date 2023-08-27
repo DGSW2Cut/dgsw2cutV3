@@ -96,12 +96,12 @@ export const Setting = styled.div`
       justify-content: space-evenly;
 
       button {
-        width: 114px;
-        height: 114px;
+        width: 6rem;
+        height: 6rem;
         /* background: #d9d9d9; */
         border-radius: 15px;
         border: 1px solid black;
-
+        margin : 0.25rem;
         font-style: normal;
         font-weight: 700;
         font-size: 36px;
