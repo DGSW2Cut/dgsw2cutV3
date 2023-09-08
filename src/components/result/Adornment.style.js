@@ -17,6 +17,12 @@ export const Container = styled.div`
     p {
       display: none;
     }
+    div:nth-child(1) {
+      margin-left: 40rem;
+    }
+    div {
+      margin-top: -20rem;
+    }
   }
 `;
 
