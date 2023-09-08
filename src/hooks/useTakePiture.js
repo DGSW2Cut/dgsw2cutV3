@@ -39,8 +39,6 @@ const useTakePiture = () => {
           let video = document.createElement("video");
           video.srcObject = vidStream;
           video.addEventListener("canplay", () => {
-            video.style.transform = "scaleX(-1)";
-            video.style.webkitTransform = "scaleX(-1)";
             res(video);
           });
         })
