@@ -4,24 +4,9 @@ export const Container = styled.div`
   display: flex;
   position: relative;
 
-  p {
-    position: absolute;
-    right: -150px;
-    top: 270px;
-
-    font-size: 100px;
-    font-weight: bolder;
-  }
-
   @media print {
-    p {
-      display: none;
-    }
     div:nth-child(1) {
-      margin-left: 40rem;
-    }
-    div {
-      margin-top: -20rem;
+      margin-left: 48rem;
     }
   }
 `;
@@ -114,6 +99,7 @@ export const PictureImg = styled.img`
 
   @media print {
     transform: translate(-166%, 125%);
+
     left: 50%;
     height: 160px;
     width: 240px;
@@ -124,3 +110,5 @@ export const PictureImg = styled.img`
   width: 214px;
   height: 158px;
 `;
+
+// transform: translate(-166%, 125%);

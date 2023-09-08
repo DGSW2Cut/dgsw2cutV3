@@ -38,6 +38,9 @@ export const Split = styled.div`
   height: 100%;
   width: 1px;
   background-color: rgba(0, 0, 0, 0.3);
+  @media print {
+    display: none;
+  }
 `;
 
 export const Setting = styled.div`
