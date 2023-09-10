@@ -6,11 +6,12 @@ import { pictureState } from "../atom/picture";
 import { useNavigate } from "react-router-dom";
 import useTakePiture from "../hooks/useTakePiture";
 import { useState } from "react";
-import cam1 from "../assets/cam1.png";
 import logo from "../assets/logo.png";
 
 const App = () => {
   const navigate = useNavigate();
+  const [countCamera, setCountCamera] = useState(3);
+  const [isCapture, setIsCapture] = useState(false);
   const { canvasRef, imageRef } = useTakePiture();
   const [imageList, setImageList] = useRecoilState(pictureState);
   const [, setEnd] = useState(false);
@@ -25,43 +26,82 @@ const App = () => {
   }, [imageList, navigate]);
 
   const captureImg = () => {
-    const img = canvasRef.current.toDataURL("image/jpeg");
-    setImageList((prev) => [...prev, img]);
+    console.log("Dfdfdf");
+    setIsCapture(true);
+    setTimeout(() => {
+      setCountCamera(2);
+    }, 1000);
+    setTimeout(() => {
+      setCountCamera(1);
+    }, 2000);
+    setTimeout(() => {
+      const img = canvasRef.current.toDataURL("image/jpeg");
+      setImageList((prev) => [...prev, img]);
+      setIsCapture(false);
+      setCountCamera(3);
+    }, 3000);
   };
 
   return (
-    <MainContainer>
-      <img
-        src={logo}
-        alt="학교 로고"
-        style={{ width: "10rem", position: "fixed", bottom: 50, left: 40 }}
-      />
-      <ImageContainer>
-        <div style={{ width: "44%" }}>
-          <img
-            ref={imageRef}
-            src=""
-            alt="hiddenImage"
-            style={{ visibility: "hidden", position: "absolute" }}
-          />
-          <div id="canvase">
-            <canvas
-              ref={canvasRef}
-              style={{ width: "100%", borderRadius: "10px" }}
+    <>
+      {isCapture && (
+        <p
+          style={{
+            position: "absolute",
+            width: "100%",
+            textAlign: "center",
+            paddingTop: "1rem",
+            zIndex: 1,
+          }}
+        >
+          <span
+            style={{
+              padding: "1rem",
+              borderRadius: "15px",
+              backgroundColor: "#f6cad6",
+              color: "white",
+              fontSize: "2rem",
+            }}
+          >
+            {countCamera}
+          </span>
+        </p>
+      )}
+      <MainContainer>
+        <img
+          src={logo}
+          alt="학교 로고"
+          style={{ width: "10rem", position: "fixed", bottom: 50, left: 40 }}
+        />
+        <ImageContainer>
+          <div style={{ width: "44%" }}>
+            <img
+              ref={imageRef}
+              src=""
+              alt="hiddenImage"
+              style={{ visibility: "hidden", position: "absolute" }}
             />
+            <div id="canvase">
+              <canvas
+                ref={canvasRef}
+                style={{ width: "100%", borderRadius: "10px" }}
+              />
+            </div>
+            <p style={{ textAlign: "center" }}>
+              <p>표정에 따라 배경이 바뀌어요</p>
+              <CaptureButton onClick={captureImg} disabled={isCapture}>
+                촬영
+              </CaptureButton>
+            </p>
           </div>
-          <p style={{ textAlign: "center" }}>
-            <p>표정에 따라 배경이 바뀌어요</p>
-            <CaptureButton onClick={captureImg}>촬영</CaptureButton>
-          </p>
-        </div>
-        <PreviewImageContainer>
-          <p>사진 미리보기</p>
-          <PreviewImage image={imageList[0]} />
-          <PreviewImage image={imageList[1]} />
-        </PreviewImageContainer>
-      </ImageContainer>
-    </MainContainer>
+          <PreviewImageContainer>
+            <p>사진 미리보기</p>
+            <PreviewImage image={imageList[0]} />
+            <PreviewImage image={imageList[1]} />
+          </PreviewImageContainer>
+        </ImageContainer>
+      </MainContainer>
+    </>
   );
 };
 
