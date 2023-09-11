@@ -11,6 +11,7 @@ import logo from "../assets/logo.png";
 const App = () => {
   const navigate = useNavigate();
   const [countCamera, setCountCamera] = useState(3);
+  const [viewCount, setViewCount] = useState(3);
   const [isCapture, setIsCapture] = useState(false);
   const { canvasRef, imageRef } = useTakePiture();
   const [imageList, setImageList] = useRecoilState(pictureState);
@@ -26,20 +27,18 @@ const App = () => {
   }, [imageList, navigate]);
 
   const captureImg = () => {
-    console.log("Dfdfdf");
     setIsCapture(true);
-    setTimeout(() => {
-      setCountCamera(2);
-    }, 1000);
-    setTimeout(() => {
-      setCountCamera(1);
-    }, 2000);
+    for (let i = 1, j = countCamera - 1; i < countCamera; i++, j--) {
+      setTimeout(() => {
+        setViewCount(j);
+      }, 1000 * i);
+    }
     setTimeout(() => {
       const img = canvasRef.current.toDataURL("image/jpeg");
       setImageList((prev) => [...prev, img]);
       setIsCapture(false);
-      setCountCamera(3);
-    }, 3000);
+      setViewCount(countCamera);
+    }, 1000 * countCamera);
   };
 
   return (
@@ -63,7 +62,7 @@ const App = () => {
               fontSize: "2rem",
             }}
           >
-            {countCamera}
+            {viewCount}
           </span>
         </p>
       )}
@@ -89,9 +88,33 @@ const App = () => {
             </div>
             <p style={{ textAlign: "center" }}>
               <p>표정에 따라 배경이 바뀌어요</p>
-              <CaptureButton onClick={captureImg} disabled={isCapture}>
-                촬영
-              </CaptureButton>
+              <>
+                <CaptureButton onClick={captureImg} disabled={isCapture}>
+                  촬영
+                </CaptureButton>
+                <>
+                  <TimerBtn
+                    isActive={countCamera === 3}
+                    onClick={() => {
+                      setCountCamera(3);
+                      setViewCount(3);
+                    }}
+                    disabled={isCapture}
+                  >
+                    3초
+                  </TimerBtn>
+                  <TimerBtn
+                    isActive={countCamera === 5}
+                    onClick={() => {
+                      setCountCamera(5);
+                      setViewCount(5);
+                    }}
+                    disabled={isCapture}
+                  >
+                    5초
+                  </TimerBtn>
+                </>
+              </>
             </p>
           </div>
           <PreviewImageContainer>
@@ -152,4 +175,15 @@ const CaptureButton = styled.button`
   &:active {
     background-color: #f6cad6;
   }
+`;
+
+const TimerBtn = styled.button`
+  margin-left: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+  box-shadow: none;
+  background-color: ${(props) => (props.isActive ? "#f6cad6" : "white")};
+  color: ${(props) => (props.isActive ? "white" : "#f6cad6")};
+  border: ${(props) => (props.isActive ? "none" : "1px solid #f6cad6")};
+  border-radius: 10px;
 `;
